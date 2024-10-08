@@ -37,7 +37,7 @@ Here's a breakdown of the process depicted:
 
 ### **Steps**
 
-1. Extract information including text, images and tables from the pdf document. PyPDF is used for text and images, and Azure Document Intelligence is used for charts
+1. Extract information including text, images and tables from the pdf document. PyPDF is used for text and images, and Azure Document Intelligence is used for tables
 
 2. Slice the extracted text/table through Phi-3/Phi-3.5 Instruct. Of course, Prompt is very important. It is necessary to keep the context coherence and keep the original text as much as possible.
 
