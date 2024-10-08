@@ -33,3 +33,9 @@ In RAG applications, how to extract unstructured content and make LLM better cha
 ![flow](./imgs/SLMFlow.png)
 
 
+    ***Samples***
+
+   - SLM Chunking FLow : [Click here](./code/slm-chunking-flow/)
+   - SLM Chunking Chat : [Click here](./code/slm-chunking-chat/)
+
+
