@@ -1,8 +1,39 @@
 # **Using SLM(Phi-3) Chunking PDF Documents**
 
-In RAG applications, how to extract unstructured content and make LLM better chat your unstructured data is what people have been discussing. Constrained by LLM tokens, we generally complete document chunking. But how to maintain the coherence of the content? This is what we have been discussing. This example uses Microsoft Phi-3 as a context understanding tool to help us divide related content more effectively.
-
 ![slm](./imgs/SLMRAG.png)
+
+This project focuses on implementing and exploring  Chunking techniques. It's designed to enhance the efficiency and accuracy of data processing and retrieval in various applications.
+ 
+Key Features
+
+- Chunking: Learn how to segment and process large datasets using advanced chunking methods.
+- Integration with Phi-3: Utilize SLMs to enhance data processing capabilities.
+- Practical Examples: Follow detailed examples and use cases to understand the application of SLM chunking in real-world scenarios.
+ 
+Getting Started
+
+To get started, you'll need:
+- Basic knowledge of Python and data processing.
+- Access to Azure services for implementing AI-driven solutions.
+ 
+Highlights
+
+- Comprehensive Documentation: Detailed notebook guides and documentation to help you understand and implement chunking.
+ 
+Under the architecture model add the following
+ 
+Retriever-Reader Architecture for Open-domain question answering (RAG Solution).
+ 
+Here's a breakdown of the process depicted:
+ 
+1. Question Input: The process starts with a question, represented by a magnifying glass and a question mark.
+ 
+2. Extract: This stage involves extracting relevant information from various sources, such as documents, the web, and text snippets.
+ 
+3. Chunking (Phi-3): The extracted data is processed and segmented using a method called SLM chunking. This stage is represented by overlapping circles with mathematical symbols, indicating data processing.
+ 
+4. Azure AI Service: The processed data is then fed into an AI service provided by Azure, specifically using , to generate answers.
+
 
 ### **Steps**
 
