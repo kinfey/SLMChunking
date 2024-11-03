@@ -1,7 +1,7 @@
 inputs:
   file_path:
     type: string
-    default: ./files/pdf/modelcard.pdf
+    default: ./files/pdf/sk.pdf
 outputs:
   output:
     type: string
@@ -41,16 +41,17 @@ nodes:
     type: code
     path: set_content.py
   inputs:
-    content: ${chunking_text_with_phi3.output}
+    content: ${check_json.output}
     table: ${chunking_table_with_phi3.output}
+    img: ${chunking_img_with_phi3.output}
 - name: embedding_with_aoai
   type: python
   source:
     type: code
     path: embedding_with_aoai.py
   inputs:
-    content: ${set_content.output}
     aoai_conn: AOAIConnection
+    contents: ${set_content.output}
 - name: save_to_ai_search_vectordb
   type: python
   source:
@@ -60,3 +61,24 @@ nodes:
     cogconn: AzureAISearchConn
     vector_json: ${embedding_with_aoai.output}
     aoaiconn: AOAIConnection
+- name: get_pdf_img
+  type: python
+  source:
+    type: code
+    path: get_pdf_img.py
+  inputs:
+    file_path: ${inputs.file_path}
+- name: chunking_img_with_phi3
+  type: python
+  source:
+    type: code
+    path: chunking_img_with_phi3.py
+  inputs:
+    imgs: ${get_pdf_img.output}
+- name: check_json
+  type: python
+  source:
+    type: code
+    path: check_json.py
+  inputs:
+    content: ${chunking_text_with_phi3.output}

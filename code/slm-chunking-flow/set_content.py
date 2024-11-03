@@ -6,15 +6,49 @@ from promptflow.core import tool
 # Adding type to arguments and return value will help the system show the types properly
 # Please update the function name/signature per need
 @tool
-def set_content(content: str,table:list):
+def set_content(content: str,table:list,img:list)->list:
     result = []
 
-    json_content = json.loads(content)
+    json_content = ''
+
+    if content.find("```json") == -1:
+        json_content = content
+    else:
+        start = content.find('```json')+7
+        end = content.find('}]') +2
+        json_content = content[start:end]
+
+    # start = content.index('```json')+7
+
+    
+
+    # end = content.index('}]') +2
+
+    # jsonstr = content[start:end]
+
+    # json_content = json.loads(jsonstr.replace('"]','"}]').replace('}  { ','},{ ').replace('   }','"}').replace('],[ ',',').replace('*  }','*"  }'))
+
+    json_content = json.loads(json_content)
+    
+    print('Extracting test from pdf file...')
 
     for item in json_content:
+        print(item)
         result.append(item)
+
+    
+    print('Extracting table from pdf file...')
 
     for item in table:
+        print(item)
         result.append(item)
 
-    return json.dumps(result)
+    
+
+    print('Extracting images from pdf file...')
+
+    for item in img:
+        print(item)
+        result.append(json.loads(item))
+
+    return result

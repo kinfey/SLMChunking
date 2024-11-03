@@ -7,7 +7,7 @@ from promptflow.core import tool
 
 endpoint = "https://models.inference.ai.azure.com"
 model_name = "Phi-3.5-mini-instruct"
-token =  'Your GitHub Models Token'
+token =  'Your GitHub Model Token'
 
 
 @tool

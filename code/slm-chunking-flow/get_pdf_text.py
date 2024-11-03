@@ -14,6 +14,9 @@ def extract_pdf_text(file_path: str) -> str:
     n_pages = len(pdf_reader.pages)
     pages_text = []
 
+
+    print('Extracting text from pdf file...')
+
     for i in range(n_pages):
         pages_text.append({'page_number': i + 1, 'text': pdf_reader.pages[i].extract_text()})
 
@@ -21,4 +24,5 @@ def extract_pdf_text(file_path: str) -> str:
 
     for item in pages_text:
         content += item['text']
+        # print(item['text'])
     return content

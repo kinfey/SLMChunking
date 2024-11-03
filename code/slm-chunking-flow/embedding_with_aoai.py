@@ -25,10 +25,10 @@ class EmbeddingTrunking:
         return embeddings
 
 @tool
-def embedding_with_aoai(content: str,aoai_conn: AzureOpenAIConnection) -> list: 
+def embedding_with_aoai(contents: list,aoai_conn: AzureOpenAIConnection) -> list: 
 
     i = 1000
-    content_list = json.loads(content)
+    content_list = contents
     for item in content_list:
         content = item['chunking']
         content_embeddings = EmbeddingTrunking.generate_embeddings(content,aoai_conn)

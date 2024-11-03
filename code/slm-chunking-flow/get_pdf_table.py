@@ -7,8 +7,8 @@ from azure.ai.documentintelligence.models import AnalyzeDocumentRequest
 
 from promptflow.core import tool
 
-endpoint = "Your Azure AI Services Endpoint"
-key = "Your Azure AI Services API Key"
+endpoint = "https://kinfey-azure-ai-service.cognitiveservices.azure.com/"
+key = "1b18187e70394496b5a0aef5e65d07cf"
 
 # The inputs section will change based on the arguments of the tool function, after you save the code
 # Adding type to arguments and return value will help the system show the types properly
@@ -37,6 +37,9 @@ def extract_pdf_table(file_path: str) -> list:
 
     tables = []
 
+
+    print('Extracting tables from pdf file...')
+
     if result.tables:
         for table_idx, table in enumerate(result.tables):
             if table.bounding_regions:
@@ -44,6 +47,9 @@ def extract_pdf_table(file_path: str) -> list:
                     page = region.page_number
             md_content = convert_table_to_markdown(table)
             json_output = json.dumps({"page_number": page, "md_content": md_content}, ensure_ascii=False)
+
+
+
             # print(json_output)
             tables.append(json_output)
 
